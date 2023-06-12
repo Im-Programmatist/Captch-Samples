@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<title>
+		Auto captcha verification
+	</title>
+	
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/1.0.10/tesseract.js'> </script>
+</head>
+
+<body>
+	<img id = "img" src = "https://i.ibb.co/L97ShyB/download.jpg" />
+	
+	<div id = "GFG"></div>
+	
+	<!-- script for auto captcha verification -->
+	<script>
+		let progress = document.querySelector('#GFG');
+		
+		Tesseract.recognize('https://i.ibb.co/L97ShyB/download.jpg')
+		
+		.progress(function(p) {
+			progress.innerHTML += JSON.stringify(p) + "<br>"
+		})
+		
+		.then(function(result) {
+			var captcha = result.text;
+			alert(captcha)
+		})
+	</script>
+</body>
+
+</html>				
